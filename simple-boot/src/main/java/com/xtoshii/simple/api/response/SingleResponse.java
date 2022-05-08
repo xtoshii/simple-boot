@@ -1,22 +1,14 @@
 package com.xtoshii.simple.api.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
 
+import java.util.Objects;
 
 /**
  * 返回通用响应类
  *
  * @param <T>
  */
-@EqualsAndHashCode(callSuper = true)
-@Data
-@Accessors
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class SingleResponse<T> extends Response {
 
     private static final long serialVersionUID = -7972199935574383407L;
@@ -25,6 +17,13 @@ public class SingleResponse<T> extends Response {
      * 返回的具体数据
      */
     private T data;
+
+    public SingleResponse(T data) {
+        this.data = data;
+    }
+
+    public SingleResponse() {
+    }
 
 
     /**
@@ -67,5 +66,38 @@ public class SingleResponse<T> extends Response {
         singleResponse.setSuccess(false);
         singleResponse.setErrorMsg(errorMsg);
         return singleResponse;
+    }
+
+    public T getData() {
+        return this.data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SingleResponse)) return false;
+        if (!super.equals(o)) return false;
+        SingleResponse<?> that = (SingleResponse<?>) o;
+        return Objects.equals(data, that.data);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), data);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("SingleResponse{");
+        sb.append("success=").append(success);
+        sb.append(", errorMsg='").append(errorMsg).append('\'');
+        sb.append(", errorCode=").append(errorCode);
+        sb.append(", data=").append(data);
+        sb.append('}');
+        return sb.toString();
     }
 }
