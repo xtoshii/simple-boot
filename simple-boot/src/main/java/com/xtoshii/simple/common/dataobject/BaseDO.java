@@ -1,15 +1,27 @@
 package com.xtoshii.simple.common.dataobject;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
+
+import java.util.Date;
 
 @Data
+@SuperBuilder
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
 public class BaseDO {
 
-    protected Integer id;
+    protected Date createTime;
 
-    protected Long createTime;
+    protected String createUser;
 
-    protected Long updateTime;
+    protected Date updateTime;
 
-    protected int deleted;
+    protected String updateUser;
+
+    protected Integer deleted;
 }

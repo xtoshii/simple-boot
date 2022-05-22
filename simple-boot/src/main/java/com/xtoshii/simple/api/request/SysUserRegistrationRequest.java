@@ -4,7 +4,6 @@ package com.xtoshii.simple.api.request;
 import java.util.Objects;
 
 
-
 public class SysUserRegistrationRequest {
 
     private String username;

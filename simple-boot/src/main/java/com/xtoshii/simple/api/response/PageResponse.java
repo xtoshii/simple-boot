@@ -1,7 +1,6 @@
 package com.xtoshii.simple.api.response;
 
 
-
 import java.util.Collection;
 import java.util.Objects;
 

@@ -3,7 +3,6 @@ package com.xtoshii.simple.api.response;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.StringJoiner;
 
 /**
  * 通用响应父类，定义公共字段
@@ -90,4 +89,6 @@ public class Response implements Serializable {
         sb.append('}');
         return sb.toString();
     }
+
+    public static Response SYSTEM_ERROR = new Response(false, "system error,please try again", 500);
 }

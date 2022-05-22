@@ -6,15 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+/**
+ * @program: simple-boot
+ * @description:
+ * @create: 2022-05-22 17:34
+ **/
 @Data
-@Builder
-@Accessors(chain = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class SysUserRegistrationDTO {
+@Accessors(chain = true)
+@Builder
+public class UpdateSysUserDTO {
+
+    private String id;
 
     private String username;
 
     private String password;
-
 }

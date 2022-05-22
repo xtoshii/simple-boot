@@ -1,25 +1,23 @@
 package com.xtoshii.simple.common.vo;
 
+import com.xtoshii.simple.common.dataobject.BaseDO;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import lombok.experimental.SuperBuilder;
 
-import java.util.Date;
-
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@SuperBuilder
 @Accessors(chain = true)
-public class SysUserVO {
+public class SysUserVO extends BaseDO {
 
-    private Integer id;
+    private String id;
 
     private String username;
 
-    private Date createTime;
-
-    private Date updateTime;
 }

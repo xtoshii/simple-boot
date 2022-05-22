@@ -15,29 +15,29 @@ public class PageRequest implements Serializable {
     /**
      * 数据总数
      */
-    private int totalCount;
+    protected int totalCount;
 
     /**
      * 每一页大小
      */
-    private int pageSize;
+    protected int pageSize;
 
 
     /**
      * 要查询第几页
      */
-    private int pageIndex;
+    protected int pageIndex;
 
 
     /**
      * 数据排序键
      */
-    private String orderBy;
+    protected String orderBy;
 
     /**
      * 数据排序方式，默认为DESC
      */
-    private String orderDirection;
+    protected String orderDirection;
 
     public PageRequest(int totalCount, int pageSize, int pageIndex, String orderBy, String orderDirection) {
         this.totalCount = totalCount;
