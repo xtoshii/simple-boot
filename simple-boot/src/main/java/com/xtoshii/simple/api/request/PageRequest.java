@@ -15,18 +15,22 @@ public class PageRequest implements Serializable {
     /**
      * 数据总数
      */
-    protected int totalCount;
+
+    protected Integer totalCount;
 
     /**
      * 每一页大小
      */
-    protected int pageSize;
+
+
+    protected Integer pageSize;
 
 
     /**
      * 要查询第几页
      */
-    protected int pageIndex;
+
+    protected Integer pageIndex;
 
 
     /**
@@ -51,15 +55,24 @@ public class PageRequest implements Serializable {
     }
 
 
-    public int getTotalCount() {
+    public Integer getTotalCount() {
+        if (Objects.isNull(totalCount) || totalCount <= 0) {
+            return 0;
+        }
         return this.totalCount;
     }
 
-    public int getPageSize() {
+    public Integer getPageSize() {
+        if (Objects.isNull(pageSize) || pageSize <= 0 || pageSize >= 100) {
+            return 10;
+        }
         return this.pageSize;
     }
 
-    public int getPageIndex() {
+    public Integer getPageIndex() {
+        if (Objects.isNull(pageIndex) || pageIndex > getTotalCount()) {
+            return 1;
+        }
         return this.pageIndex;
     }
 
@@ -101,7 +114,7 @@ public class PageRequest implements Serializable {
         if (this == o) return true;
         if (!(o instanceof PageRequest)) return false;
         PageRequest that = (PageRequest) o;
-        return totalCount == that.totalCount && pageSize == that.pageSize && pageIndex == that.pageIndex && Objects.equals(orderBy, that.orderBy) && Objects.equals(orderDirection, that.orderDirection);
+        return totalCount.equals(that.totalCount) && pageSize.equals(that.pageSize) && pageIndex.equals(that.pageIndex) && Objects.equals(orderBy, that.orderBy) && Objects.equals(orderDirection, that.orderDirection);
     }
 
     @Override

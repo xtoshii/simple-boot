@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * @program: simple-boot
  * @description:
@@ -16,9 +18,12 @@ import lombok.NoArgsConstructor;
 @Builder
 public class UpdateSysUserRequest {
 
+    @NotBlank
     private String id;
 
+    @NotBlank
     private String username;
 
+    @NotBlank
     private String password;
 }

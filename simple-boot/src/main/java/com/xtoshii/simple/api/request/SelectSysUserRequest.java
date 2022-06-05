@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotBlank;
+
 /**
  * @program: simple-boot
  * @description:
@@ -16,5 +18,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SelectSysUserRequest {
 
+    @NotBlank
     private String id;
 }

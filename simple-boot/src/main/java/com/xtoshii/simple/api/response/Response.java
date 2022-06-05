@@ -91,4 +91,6 @@ public class Response implements Serializable {
     }
 
     public static Response SYSTEM_ERROR = new Response(false, "system error,please try again", 500);
+
+    public static Response INVALID_INPUT = new Response(false, "invalid parameters,please check your input", 400);
 }

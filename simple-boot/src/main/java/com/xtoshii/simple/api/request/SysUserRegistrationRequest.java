@@ -1,13 +1,16 @@
 package com.xtoshii.simple.api.request;
 
 
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 
 public class SysUserRegistrationRequest {
 
+    @NotBlank
     private String username;
 
+    @NotBlank
     private String password;
 
     public String getUsername() {
