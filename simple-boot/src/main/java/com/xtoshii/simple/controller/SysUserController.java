@@ -8,8 +8,6 @@ import com.xtoshii.simple.common.converter.SysUserConverter;
 import com.xtoshii.simple.common.dto.SysUserRegistrationDTO;
 import com.xtoshii.simple.common.dto.UpdateSysUserDTO;
 import com.xtoshii.simple.service.SysUserService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,16 +19,16 @@ public class SysUserController {
 
     final SysUserService sysUserService;
 
-    
+
     public SysUserController(SysUserConverter sysUserConverter, SysUserService sysUserService) {
         this.sysUserConverter = sysUserConverter;
         this.sysUserService = sysUserService;
     }
 
     /**
-     * @apiNote 用户注册接口
      * @param registrationRequest 注册用户请求
      * @return BaseResponse
+     * @apiNote 用户注册接口
      */
     @PostMapping("/user/register")
     public BaseResponse register(@RequestBody SysUserRegistrationRequest registrationRequest) {
@@ -40,9 +38,9 @@ public class SysUserController {
 
 
     /**
-     * @apiNote 用户更新信息接口
      * @param updateSysUserRequest updateSysUserRequest
      * @return BaseResponse
+     * @apiNote 用户更新信息接口
      */
     @PostMapping("/user/update")
     public BaseResponse update(@RequestBody UpdateSysUserRequest updateSysUserRequest) {
@@ -51,9 +49,9 @@ public class SysUserController {
     }
 
     /**
-     * @apiNote 根据用户id查询用户
      * @param selectSysUserRequest selectSysUserRequest
      * @return BaseResponse
+     * @apiNote 根据用户id查询用户
      */
     @PostMapping("/user/select")
     public BaseResponse select(@RequestBody SelectSysUserRequest selectSysUserRequest) {

@@ -13,12 +13,15 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        BIN_TO_UUID(`id`) as id,`create_time`,
+        BIN_TO_UUID
+            (` id `)
+            as id,`create_time`,
         BIN_TO_UUID(`create_user`) as create_user,
         `update_time`, BIN_TO_UUID(`update_user`) as update_user, `deleted`,`username`, `password`
     </sql>
     <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
-        select <include refid="Base_Column_List" />
+        select
+        <include refid="Base_Column_List"/>
         from sys_user
         where id = UUID_TO_BIN(#{id})
     </select>
@@ -57,13 +60,13 @@
                 #{createTime},
             </if>
             <if test="createUser != null">
-              UUID_TO_BIN(#{createUser}),
+                UUID_TO_BIN(#{createUser}),
             </if>
             <if test="updateTime != null">
                 #{updateTime},
             </if>
             <if test="updateUser != null">
-               UUID_TO_BIN(#{updateUser}),
+                UUID_TO_BIN(#{updateUser}),
             </if>
             <if test="deleted != null">
                 #{deleted},

@@ -9,6 +9,7 @@ public class SysUserRegistrationRequest {
 
     /**
      * 注册用户名
+     *
      * @mock jobs
      */
     @NotBlank
@@ -16,6 +17,7 @@ public class SysUserRegistrationRequest {
 
     /**
      * 注册用户密码
+     *
      * @mock 123456
      */
     @NotBlank
@@ -39,8 +41,12 @@ public class SysUserRegistrationRequest {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SysUserRegistrationRequest)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof SysUserRegistrationRequest)) {
+            return false;
+        }
         SysUserRegistrationRequest that = (SysUserRegistrationRequest) o;
         return Objects.equals(username, that.username) && Objects.equals(password, that.password);
     }

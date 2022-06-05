@@ -1,7 +1,6 @@
 package com.xtoshii.simple.service.impl;
 
 import com.xtoshii.simple.api.response.BaseResponse;
-import com.xtoshii.simple.api.response.BaseResponse;
 import com.xtoshii.simple.common.converter.SysUserConverter;
 import com.xtoshii.simple.common.dataobject.SysUserDO;
 import com.xtoshii.simple.common.dto.SysUserRegistrationDTO;

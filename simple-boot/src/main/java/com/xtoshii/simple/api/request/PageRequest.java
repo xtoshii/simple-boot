@@ -111,8 +111,12 @@ public class PageRequest implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PageRequest)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof PageRequest)) {
+            return false;
+        }
         PageRequest that = (PageRequest) o;
         return totalCount.equals(that.totalCount) && pageSize.equals(that.pageSize) && pageIndex.equals(that.pageIndex) && Objects.equals(orderBy, that.orderBy) && Objects.equals(orderDirection, that.orderDirection);
     }

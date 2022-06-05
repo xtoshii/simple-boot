@@ -20,6 +20,7 @@ public class UpdateSysUserRequest {
 
     /**
      * 需要更新信息的用户的id
+     *
      * @mock 11ecd9ac-becb-b642-b7b3-98e7f45696fc
      */
     @NotBlank
@@ -27,6 +28,7 @@ public class UpdateSysUserRequest {
 
     /**
      * 该用户的用户名，更新前后均可
+     *
      * @mock jobs
      */
     @NotBlank
@@ -34,6 +36,7 @@ public class UpdateSysUserRequest {
 
     /**
      * 该用户的密码，更新前后均可
+     *
      * @mock 123456
      */
     @NotBlank

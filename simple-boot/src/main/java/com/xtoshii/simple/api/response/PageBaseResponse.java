@@ -102,9 +102,15 @@ public class PageBaseResponse<T> extends BaseResponse {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PageBaseResponse)) return false;
-        if (!super.equals(o)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof PageBaseResponse)) {
+            return false;
+        }
+        if (!super.equals(o)) {
+            return false;
+        }
         PageBaseResponse<?> that = (PageBaseResponse<?>) o;
         return Objects.equals(totalCount, that.totalCount) && Objects.equals(pageSize, that.pageSize) && Objects.equals(pageIndex, that.pageIndex) && Objects.equals(data, that.data);
     }

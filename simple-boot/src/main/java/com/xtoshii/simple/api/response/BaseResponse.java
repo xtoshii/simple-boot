@@ -14,12 +14,14 @@ public class BaseResponse<T> implements Serializable {
 
     /**
      * 本次请求是否成功
+     *
      * @mock true
      */
     protected Boolean success;
 
     /**
      * 错误消息
+     *
      * @mock null
      */
     protected String errorMsg;
@@ -30,12 +32,14 @@ public class BaseResponse<T> implements Serializable {
      * 200 成功
      * 400 客户端错误
      * 500 服务端错误
+     *
      * @mock 200
      */
     protected Integer errorCode;
 
     /**
      * 返回数据
+     *
      * @mock request succeed
      */
     private T data;
@@ -79,8 +83,12 @@ public class BaseResponse<T> implements Serializable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         BaseResponse<?> that = (BaseResponse<?>) o;
         return Objects.equals(success, that.success) && Objects.equals(errorMsg, that.errorMsg) && Objects.equals(errorCode, that.errorCode) && Objects.equals(data, that.data);
     }
@@ -101,16 +109,16 @@ public class BaseResponse<T> implements Serializable {
         return sb.toString();
     }
 
-    public static <T> BaseResponse<T> succeed(T data){
-        return new BaseResponse<>(true,null,null,data);
+    public static <T> BaseResponse<T> succeed(T data) {
+        return new BaseResponse<>(true, null, null, data);
     }
 
-    public static <T> BaseResponse fail(String errorMsg){
-        return new BaseResponse(false,errorMsg,500,null);
+    public static <T> BaseResponse fail(String errorMsg) {
+        return new BaseResponse(false, errorMsg, 500, null);
     }
 
-    public static <T> BaseResponse fail(String errorMsg,Integer errorCode){
-        return new BaseResponse(false,errorMsg,errorCode,null);
+    public static <T> BaseResponse fail(String errorMsg, Integer errorCode) {
+        return new BaseResponse(false, errorMsg, errorCode, null);
     }
 
     public static BaseResponse SYSTEM_ERROR = new BaseResponse(false, "system error,please try again", 500, null);
