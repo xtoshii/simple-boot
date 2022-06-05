@@ -9,6 +9,8 @@ import com.xtoshii.simple.common.converter.SysUserConverter;
 import com.xtoshii.simple.common.dto.SysUserRegistrationDTO;
 import com.xtoshii.simple.common.dto.UpdateSysUserDTO;
 import com.xtoshii.simple.service.SysUserService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,5 +42,13 @@ public class SysUserController {
     @PostMapping("/user/select")
     public Response select(@RequestBody SelectSysUserRequest selectSysUserRequest) {
         return SingleResponse.succeed(sysUserService.selectById(selectSysUserRequest.getId()));
+    }
+
+    @GetMapping("/user/select/{id}")
+    public Response select(@PathVariable(required = false) String id){
+        if(id == null){
+            return Response.INVALID_INPUT;
+        }
+        return SingleResponse.succeed( sysUserService.selectById(id));
     }
 }
