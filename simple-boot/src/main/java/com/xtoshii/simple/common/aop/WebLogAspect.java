@@ -1,14 +1,14 @@
 package com.xtoshii.simple.common.aop;
 
 import eu.bitwalker.useragentutils.UserAgent;
+import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -25,9 +25,9 @@ import java.util.Arrays;
  **/
 @Aspect
 @Component
+@Slf4j
 public class WebLogAspect {
 
-    private final static Logger LOGGER = LoggerFactory.getLogger(WebLogAspect.class);
 
     /**
      * 进入方法时间戳
@@ -67,17 +67,17 @@ public class WebLogAspect {
         UserAgent userAgent = UserAgent.parseUserAgentString(request.getHeader("User-Agent"));
         //打印请求的内容
         startTime = System.currentTimeMillis();
-        LOGGER.info("sessionId:{}", request.getSession().getId());
-        LOGGER.info("请求开始时间：{}", LocalDateTime.now());
-        LOGGER.info("请求Url : {}", request.getRequestURL());
-        LOGGER.info("请求方式 : {}", request.getMethod());
-        LOGGER.info("请求ip : {}", request.getRemoteAddr());
-        LOGGER.info("请求方法 :{}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
-        LOGGER.info("请求参数 : {}", Arrays.toString(joinPoint.getArgs()));
+        log.info("sessionId:{}", request.getSession().getId());
+        log.info("请求开始时间：{}", LocalDateTime.now());
+        log.info("请求Url : {}", request.getRequestURL());
+        log.info("请求方式 : {}", request.getMethod());
+        log.info("请求ip : {}", request.getRemoteAddr());
+        log.info("请求方法 :{}.{}", joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());
+        log.info("请求参数 : {}", Arrays.toString(joinPoint.getArgs()));
         // 系统信息
-        LOGGER.info("浏览器：{}", userAgent.getBrowser().toString());
-        LOGGER.info("浏览器版本：{}", userAgent.getBrowserVersion());
-        LOGGER.info("操作系统: {}", userAgent.getOperatingSystem().toString());
+        log.info("浏览器：{}", userAgent.getBrowser().toString());
+        log.info("浏览器版本：{}", userAgent.getBrowserVersion());
+        log.info("操作系统: {}", userAgent.getOperatingSystem().toString());
     }
 
     /**
@@ -91,10 +91,10 @@ public class WebLogAspect {
     @AfterReturning(returning = "ret", pointcut = "webLogPointcut()")
     public void doAfterReturning(Object ret) throws Throwable {
         endTime = System.currentTimeMillis();
-        LOGGER.info("请求结束时间：{}", LocalDateTime.now());
-        LOGGER.info("请求耗时：{}ms", (endTime - startTime));
+        log.info("请求结束时间：{}", LocalDateTime.now());
+        log.info("请求耗时：{}ms", (endTime - startTime));
         // 处理完请求，返回内容
-        LOGGER.info("请求返回 : {}", ret);
+        log.info("请求返回 : {}", ret);
     }
 
     /**
@@ -107,7 +107,7 @@ public class WebLogAspect {
     @AfterThrowing(value = "webLogPointcut()", throwing = "throwable")
     public void doAfterThrowing(Throwable throwable) {
         // 保存异常日志记录
-        LOGGER.error("发生异常时间：{}", LocalDateTime.now());
-        LOGGER.error("抛出异常：{}", throwable.toString());
+        log.error("发生异常时间：{}", LocalDateTime.now());
+        log.error("抛出异常：{}", throwable.toString());
     }
 }
