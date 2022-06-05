@@ -1,6 +1,6 @@
 package com.xtoshii.simple.service;
 
-import com.xtoshii.simple.api.response.Response;
+import com.xtoshii.simple.api.response.BaseResponse;
 import com.xtoshii.simple.common.dataobject.SysUserDO;
 import com.xtoshii.simple.common.dto.SysUserRegistrationDTO;
 import com.xtoshii.simple.common.dto.UpdateSysUserDTO;
@@ -13,9 +13,9 @@ import com.xtoshii.simple.common.dto.UpdateSysUserDTO;
  **/
 public interface SysUserService {
 
-    Response register(SysUserRegistrationDTO registrationDTO);
+    BaseResponse register(SysUserRegistrationDTO registrationDTO);
 
-    Response update(UpdateSysUserDTO updateSysUserDTO);
+    BaseResponse update(UpdateSysUserDTO updateSysUserDTO);
 
     SysUserDO selectById(String id);
 }

@@ -7,9 +7,17 @@ import java.util.Objects;
 
 public class SysUserRegistrationRequest {
 
+    /**
+     * 注册用户名
+     * @mock jobs
+     */
     @NotBlank
     private String username;
 
+    /**
+     * 注册用户密码
+     * @mock 123456
+     */
     @NotBlank
     private String password;
 

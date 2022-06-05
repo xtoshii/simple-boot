@@ -9,7 +9,7 @@ import java.util.Objects;
  *
  * @param <T>
  */
-public class PageResponse<T> extends Response {
+public class PageBaseResponse<T> extends BaseResponse {
 
     private static final long serialVersionUID = -8404784790940409224L;
 
@@ -33,14 +33,14 @@ public class PageResponse<T> extends Response {
      */
     private Collection<T> data;
 
-    public PageResponse(Integer totalCount, Integer pageSize, Integer pageIndex, Collection<T> data) {
+    public PageBaseResponse(Integer totalCount, Integer pageSize, Integer pageIndex, Collection<T> data) {
         this.totalCount = totalCount;
         this.pageSize = pageSize;
         this.pageIndex = pageIndex;
         this.data = data;
     }
 
-    public PageResponse() {
+    public PageBaseResponse() {
     }
 
     /**
@@ -51,8 +51,8 @@ public class PageResponse<T> extends Response {
      * @param <T>        返回数据的类型
      * @return PageResponse
      */
-    public static <T> PageResponse<T> succeed(Collection<T> data, int totalCount, int pageIndex, int pageSize) {
-        PageResponse<T> pageResponse = new PageResponse<>();
+    public static <T> PageBaseResponse<T> succeed(Collection<T> data, int totalCount, int pageIndex, int pageSize) {
+        PageBaseResponse<T> pageResponse = new PageBaseResponse<>();
         pageResponse.setData(data)
                 .setTotalCount(totalCount)
                 .setPageIndex(pageIndex)
@@ -80,22 +80,22 @@ public class PageResponse<T> extends Response {
         return this.data;
     }
 
-    public PageResponse<T> setTotalCount(Integer totalCount) {
+    public PageBaseResponse<T> setTotalCount(Integer totalCount) {
         this.totalCount = totalCount;
         return this;
     }
 
-    public PageResponse<T> setPageSize(Integer pageSize) {
+    public PageBaseResponse<T> setPageSize(Integer pageSize) {
         this.pageSize = pageSize;
         return this;
     }
 
-    public PageResponse<T> setPageIndex(Integer pageIndex) {
+    public PageBaseResponse<T> setPageIndex(Integer pageIndex) {
         this.pageIndex = pageIndex;
         return this;
     }
 
-    public PageResponse<T> setData(Collection<T> data) {
+    public PageBaseResponse<T> setData(Collection<T> data) {
         this.data = data;
         return this;
     }
@@ -103,9 +103,9 @@ public class PageResponse<T> extends Response {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof PageResponse)) return false;
+        if (!(o instanceof PageBaseResponse)) return false;
         if (!super.equals(o)) return false;
-        PageResponse<?> that = (PageResponse<?>) o;
+        PageBaseResponse<?> that = (PageBaseResponse<?>) o;
         return Objects.equals(totalCount, that.totalCount) && Objects.equals(pageSize, that.pageSize) && Objects.equals(pageIndex, that.pageIndex) && Objects.equals(data, that.data);
     }
 

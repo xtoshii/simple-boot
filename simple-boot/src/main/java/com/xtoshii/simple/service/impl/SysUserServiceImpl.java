@@ -1,7 +1,7 @@
 package com.xtoshii.simple.service.impl;
 
-import com.xtoshii.simple.api.response.Response;
-import com.xtoshii.simple.api.response.SingleResponse;
+import com.xtoshii.simple.api.response.BaseResponse;
+import com.xtoshii.simple.api.response.BaseResponse;
 import com.xtoshii.simple.common.converter.SysUserConverter;
 import com.xtoshii.simple.common.dataobject.SysUserDO;
 import com.xtoshii.simple.common.dto.SysUserRegistrationDTO;
@@ -36,35 +36,35 @@ public class SysUserServiceImpl implements SysUserService {
     }
 
     @Override
-    public Response register(SysUserRegistrationDTO registrationDTO) {
+    public BaseResponse register(SysUserRegistrationDTO registrationDTO) {
         try {
             SysUserDO sysUserDO = sysUserConverter.toSysUserDO(registrationDTO);
             Date now = new Date();
             sysUserDO.setCreateTime(now)
                     .setUpdateTime(now);
             sysUserMapper.insertSysUser(sysUserDO);
-            return SingleResponse.succeed("success!");
+            return BaseResponse.succeed("success!");
         } catch (Exception e) {
             log.error("register: {} error:{}", registrationDTO, e);
-            return Response.SYSTEM_ERROR;
+            return BaseResponse.SYSTEM_ERROR;
         }
 
     }
 
     @Override
-    public Response update(UpdateSysUserDTO updateSysUserDTO) {
+    public BaseResponse update(UpdateSysUserDTO updateSysUserDTO) {
         try {
             SysUserDO sysUserDO = selectById(updateSysUserDTO.getId());
 
             if (Objects.isNull(sysUserDO)) {
-                return SingleResponse.fail("not exist the user or user information is not match ");
+                return BaseResponse.fail("not exist the user or user information is not match ");
             }
             SysUserDO updateUserDO = sysUserConverter.toSysUserDO(updateSysUserDTO);
             sysUserMapper.updateById(updateUserDO);
-            return SingleResponse.succeed("success");
+            return BaseResponse.succeed("success");
         } catch (Exception e) {
             log.error("update:{} error:{}", updateSysUserDTO, e);
-            return Response.SYSTEM_ERROR;
+            return BaseResponse.SYSTEM_ERROR;
         }
     }
 
